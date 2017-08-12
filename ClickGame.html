@@ -4,14 +4,18 @@
   <body>
     <h1>Mouse Click Game</h1>
     <p>
-      Welcome to a simple mouse click accuracy game. The concept is easy, simply try to
-      click as many of the red targets as possible in the alloted time
+      Welcome to a simple mouse click accuracy game. To play, simply try to click 10
+      targest as fast as you can.
     </p>
 
     <link rel="stylesheet" type="text/css" href="ClickGame.css"/>
     <canvas id="canvas" width="600" height="400"></canvas>
 
-    <p>Your score is: <span id="score">0</span></p>
+    <p>Targets left: <span id="targetsLeft"> </span></p>
+    <p>Your time:
+      <span id="timeSec"></span><span id="timePeriod" hidden>.</span><span id="timeMilliSec"></span>
+      <span id="timeUnits" hidden> seconds</span>
+    </p>
 
     <script src="ClickGame.js"></script>
   </body>
