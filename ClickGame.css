@@ -1,4 +1,21 @@
+html{
+  background:#BDBDBD;
 
+}
+
+body{
+  margin: 0 auto;
+  max-width: 800px;
+  font-size: 16px;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  background: #F5F5F5;
+  color: #212121;
+  padding: 2em 2em;
+
+
+}
 canvas {
   border: 1px solid #000000;
+  display: block;
+  margin: auto;
 }

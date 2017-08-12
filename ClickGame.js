@@ -2,7 +2,8 @@ var canvas = document.getElementById("canvas");
 var context = canvas.getContext("2d");
 
 var circX, circY; // center coordinates for the circle
-var clickX, clickY;
+var clickX, clickY; // coordinates of the user click event
+const TARGET_RAD = 20; // radius of the target circle
 
 var canvasLeft = canvas.offsetLeft;
 var canvasTop = canvas.offsetTop;
@@ -14,17 +15,16 @@ var scoreText = document.getElementById("score");
 
 
 
-// run this code once first
-circX = Math.floor((Math.random() * 560) + 20);
-circY = Math.floor((Math.random() * 360) + 20);
-
+// this code generates the first circle
+circX = Math.floor((Math.random() * canvas.width - (2 * TARGET_RAD)) + TARGET_RAD);
+circY = Math.floor((Math.random() * canvas.height - (2 * TARGET_RAD)) + TARGET_RAD);
 context.beginPath();
-context.arc(circX,circY,20,0,2*Math.PI);
+context.arc(circX,circY,TARGET_RAD,0,2*Math.PI);
 context.fillStyle = "#FF0000";
 context.fill();
 context.stroke();
 
-
+// listening for user click
 canvas.addEventListener('click', function(event){
 
   clickX = event.pageX - canvasLeft;
@@ -37,11 +37,11 @@ canvas.addEventListener('click', function(event){
 
     context.clearRect(0,0,canvas.width,canvas.height);
 
-    circX = Math.floor((Math.random() * 560) + 20);
-    circY = Math.floor((Math.random() * 360) + 20);
+    circX = Math.floor((Math.random() * canvas.width - (2 * TARGET_RAD)) + TARGET_RAD);
+    circY = Math.floor((Math.random() * canvas.height - (2 * TARGET_RAD)) + TARGET_RAD);
 
     context.beginPath();
-    context.arc(circX,circY,20,0,2*Math.PI);
+    context.arc(circX,circY,TARGET_RAD,0,2*Math.PI);
     context.fillStyle = "#FF0000";
     context.fill();
     context.stroke();
