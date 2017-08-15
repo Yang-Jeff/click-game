@@ -109,8 +109,8 @@ function drawStartButton(){
 // this function draws a target circle at a random location
 // TODO sometimes the circle is generated outside of canvas, need to fix
 function drawCircleTarget(){
-  circX = Math.floor((Math.random() * canvas.width - (2 * TARGET_RAD)) + TARGET_RAD);
-  circY = Math.floor((Math.random() * canvas.height - (2 * TARGET_RAD)) + TARGET_RAD);
+  circX = Math.floor((Math.random() * (canvas.width -  (2 * TARGET_RAD))) + TARGET_RAD);
+  circY = Math.floor((Math.random() * (canvas.height - (2 * TARGET_RAD))) + TARGET_RAD);
   context.beginPath();
   context.arc(circX,circY,TARGET_RAD,0,2*Math.PI);
   context.fillStyle = "#FF0000";
