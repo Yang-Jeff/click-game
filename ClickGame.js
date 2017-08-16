@@ -55,41 +55,44 @@ function clickEvent(event){
     }
 
   }
-  // when user clicks the last target, end the game
-  if (numTargetLeft == 1){
 
-    console.log("Game end");
-    // TODO why is the final circle not cleared
-    context.clearRect(0,0,canvas.width,canvas.height);
 
-    targetLeftText.innerHTML = 0;
+  // when the user clicks a target
+  if (Math.pow((clickX - circX), 2) + Math.pow((clickY - circY), 2) <= Math.pow(TARGET_RAD, 2) ){
+    // when user clicks the last target, end the game
+    if (numTargetLeft == 1){
+      console.log("Game end");
+      // TODO why is the final circle not cleared
+      context.clearRect(0,0,canvas.width,canvas.height);
 
-    endTime = Date.now();
-    var gameTime = endTime - startTime;
+      targetLeftText.innerHTML = 0;
 
-    // reset game values
-    gameStart = false;
-    numTargetLeft = TOTAL_TARGETS;
+      endTime = Date.now();
+      var gameTime = endTime - startTime;
 
-    // display time taken
-    context.font = "30px Helvetica Neue";
-    context.textAlign = "center";
-    context.fillStyle = "#212121";
-    context.fillText("Your time is: " + Math.floor(gameTime/1000) + "." + gameTime%1000 + " seconds",
-        canvas.width/2, canvas.height/2 - 100);
+      // reset game values
+      gameStart = false;
+      numTargetLeft = TOTAL_TARGETS;
 
-    drawStartButton();
+      // display time taken
+      context.font = "30px Helvetica Neue";
+      context.textAlign = "center";
+      context.fillStyle = "#212121";
+      context.fillText("Your time is: " + Math.floor(gameTime/1000) + "." + gameTime%1000 + " seconds",
+          canvas.width/2, canvas.height/2 - 100);
 
-  }
+      drawStartButton();
+    }
 
-  // when the user clicks a target while game is in progress
-  if ( gameStart == true && Math.pow((clickX - circX), 2) + Math.pow((clickY - circY), 2) <= Math.pow(TARGET_RAD, 2) ){
-    numTargetLeft--;
-    targetLeftText.innerHTML = numTargetLeft;
+    // if game is in progress
+    if (gameStart == true){
+      numTargetLeft--;
+      targetLeftText.innerHTML = numTargetLeft;
 
-    context.clearRect(0,0,canvas.width,canvas.height);
+      context.clearRect(0,0,canvas.width,canvas.height);
+      drawCircleTarget();
+    }
 
-    drawCircleTarget();
   }
 
 }
