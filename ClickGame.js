@@ -15,7 +15,7 @@ var targetLeftText = document.getElementById("targetsLeft");
 var startTime;
 var endTime;
 
-var gameStart = false;  // has the game started?
+var gameStart = false;  // is the game in progress?
 
 targetLeftText.innerHTML = numTargetLeft;
 
@@ -40,8 +40,8 @@ function clickEvent(event){
   clickX = event.pageX - canvasLeft;
   clickY = event.pageY - canvasTop;
 
-  if (gameStart == false){  // if the game has not started, start it
-
+  if (gameStart == false){  // if the game has not started
+    // if the user clicks the startbutton
     if (clickX >= canvas.width/2 - 50 && clickX <= canvas.width/2 + 50 && clickY >= canvas.height/2 - 35 && clickY <= canvas.height/2 + 15){
       context.clearRect(0,0,canvas.width,canvas.height);
       gameStart = true;
@@ -55,12 +55,13 @@ function clickEvent(event){
     }
 
   }
-  // because of how onclick works this has to be 1. stop the game once user has clicked all targets
+  // when user clicks the last target, end the game
   if (numTargetLeft == 1){
 
     console.log("Game end");
-    // TODO why is final circle not cleared
+    // TODO why is the final circle not cleared
     context.clearRect(0,0,canvas.width,canvas.height);
+
     targetLeftText.innerHTML = 0;
 
     endTime = Date.now();
@@ -78,11 +79,11 @@ function clickEvent(event){
         canvas.width/2, canvas.height/2 - 100);
 
     drawStartButton();
+
   }
 
-
-  if ( gameStart == true && Math.pow((clickX - circX), 2) + Math.pow((clickY - circY), 2) <= 400 ){
-
+  // when the user clicks a target while game is in progress
+  if ( gameStart == true && Math.pow((clickX - circX), 2) + Math.pow((clickY - circY), 2) <= Math.pow(TARGET_RAD, 2) ){
     numTargetLeft--;
     targetLeftText.innerHTML = numTargetLeft;
 
@@ -108,6 +109,7 @@ function drawStartButton(){
 
 // this function draws a target circle at a random location
 function drawCircleTarget(){
+  console.log("drawing circle!!!");
   circX = Math.floor((Math.random() * (canvas.width -  (2 * TARGET_RAD))) + TARGET_RAD);
   circY = Math.floor((Math.random() * (canvas.height - (2 * TARGET_RAD))) + TARGET_RAD);
   context.beginPath();
