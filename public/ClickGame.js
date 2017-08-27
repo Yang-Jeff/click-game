@@ -68,8 +68,8 @@ function clickEvent(event){
       targetLeftText.innerHTML = 0;
 
       endTime = Date.now();
-      var gameTime = endTime - startTime;
-
+      var gameTimeRaw = endTime - startTime;
+      var gameTimeSeconds = gameTimeRaw / 1000.0;
       // reset game values
       gameStart = false;
       numTargetLeft = TOTAL_TARGETS;
@@ -78,10 +78,11 @@ function clickEvent(event){
       context.font = "30px Helvetica Neue";
       context.textAlign = "center";
       context.fillStyle = "#212121";
-      context.fillText("Your time is: " + Math.floor(gameTime/1000) + "." + gameTime%1000 + " seconds",
-          canvas.width/2, canvas.height/2 - 100);
+      context.fillText("Your time is: " + gameTimeSeconds + " seconds", canvas.width/2, canvas.height/2 - 100);
 
       drawStartButton();
+      recordScore(gameTimeSeconds);
+
     }
 
     // if game is in progress
@@ -120,4 +121,15 @@ function drawCircleTarget(){
   context.fillStyle = "#FF0000";
   context.fill();
   context.stroke();
+}
+
+function recordScore(score){
+  // if user has not already entered their name
+
+  var name = window.prompt("Your time is " + score + " seconds. Please enter your name to record your score");
+  if (name != null){
+    // TODO if user has entered a name, send score to server
+    alert("TODO send score")
+  }
+
 }
