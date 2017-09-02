@@ -129,6 +129,21 @@ function recordScore(score){
   var name = window.prompt("Your time is " + score + " seconds. Please enter your name to record your score");
   if (name != null){
     // TODO if user has entered a name, send score to server
+    // FIXME never worked in the first place????
+
+    var scoreObj = new Object();
+    scoreObj.Name = name;
+    scoreObj.Score = score;
+    var scoreJSONString = JSON.stringify(scoreObj);
+
+    console.log(scoreJSONString);
+
+    try{
+      $.post("./scores", {"Name":"testewff\n","Score":6.333});
+    }
+    catch(err){
+
+    }
     alert("TODO send score")
   }
 

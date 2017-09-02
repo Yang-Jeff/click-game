@@ -1,6 +1,6 @@
 // NOTE is there better way to do this than with jquery???
 
-$.getJSON('./scores', function(data){
+$.getJSON('./highscores', function(data){
   // TODO work with data
   for (var i = 0; i < data.length; i++){
 

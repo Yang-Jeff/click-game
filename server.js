@@ -29,10 +29,15 @@ app.listen(port, function(){
 app.use(express.static('./public'));  // this sends clientside files
 
 // TODO post scores
+// FIXME Never worked in the first place 
+app.post('/scores', function(request, response){
+  db.run("INSERT INTO Scores VALUES ?", request.body)
+  console.log("IT WORKED????");
+});
 
 
 // this retrieves the high scores
-app.get('/scores', function(request, response){
+app.get('/highscores', function(request, response){
   db.all("SELECT * FROM Scores ORDER BY Score ASC", function(err, rows){
 
     console.log("GET request for scores");
