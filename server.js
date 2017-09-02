@@ -28,15 +28,12 @@ app.listen(port, function(){
 // TODO add compression???
 app.use(express.static('./public'));  // this sends clientside files
 
-// TODO change score name?
-// this posts new score to server
-app.post('/score', function(request, response){
-  db.run("INSERT INTO ")
-});
+// TODO post scores
+
 
 // this retrieves the high scores
-app.get('/highscores', function(request, response){
-  db.all("SELECT * FROM Scores", function(err, rows){
+app.get('/scores', function(request, response){
+  db.all("SELECT * FROM Scores ORDER BY Score ASC", function(err, rows){
 
     console.log("GET request for scores");
     response.send(rows);
