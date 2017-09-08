@@ -11,7 +11,6 @@ app.use(bodyParser.json());
 
 
 
-
 app.listen(port, function(){
     console.log("Express app listening on port " + port);
 });
@@ -19,18 +18,12 @@ app.listen(port, function(){
 // TODO add compression???
 app.use(express.static('./public'));  // this sends clientside files
 
-
 app.post('/scores', function(request, response){
-  console.log(request.body);
-  var userName = request.body.Name;
-  var userScore = request.body.Score;
-  console.log(userName + " USER TIME " + userScore + " YO THIS WORK???");
+  console.log("New POST request");
 
-  db.run("INSERT INTO Scores (Name, Score) VALUES (?,? )", [userName,userScore]);
-
-  console.log("IT WORKED????");
+  console.log("Name: " + request.body.Name + " Time: " + request.body.Score);
+  db.run("INSERT INTO Scores (Name, Score) VALUES (?,? )", [request.body.Name,request.body.Score]);
 });
-
 
 // this retrieves the high scores
 app.get('/highscores', function(request, response){

@@ -138,7 +138,8 @@ function recordScore(score){
     console.log(scoreJSONString);
 
     try{
-      //maybe this does work???   $.post("./scores", {"Name":"testewff\n","Score":6.333});
+      //TODO why doesn't this work
+      // $.post("./scores", scoreJSONString);
 
       $.ajax({
         type: 'POST',
