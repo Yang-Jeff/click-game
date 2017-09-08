@@ -9,18 +9,6 @@ var db = new sqlite3.Database('Scores.db');
 
 app.use(bodyParser.json());
 
-/*
-, sqlite3.OPEN_CREATE,// TODO idk about OPEN_CREATE here
-  (err) => {
-    if (err) {
-      console.error(err.message);
-    }
-    console.log("Database connected");
-  }
-);
-*/
-// TODO make sure scores table is here and ready to go
-
 
 
 
@@ -31,19 +19,15 @@ app.listen(port, function(){
 // TODO add compression???
 app.use(express.static('./public'));  // this sends clientside files
 
-// TODO post scores
-// FIXME Never worked in the first place
+
 app.post('/scores', function(request, response){
   console.log(request.body);
   var userName = request.body.Name;
   var userScore = request.body.Score;
   console.log(userName + " USER TIME " + userScore + " YO THIS WORK???");
 
-  db.run("INSERT INTO Scores (Name, Score) VALUES (?,? )", [userName,userScore]); /*function(err){
-    console.log ("Oh no, an error!!!!!!!");
-    console.log(err.message);
+  db.run("INSERT INTO Scores (Name, Score) VALUES (?,? )", [userName,userScore]);
 
-  });*/
   console.log("IT WORKED????");
 });
 
