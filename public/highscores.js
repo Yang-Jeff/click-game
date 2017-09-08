@@ -12,7 +12,7 @@ $.getJSON('./highscores', function(data){
 
 
 
-    console.log(data[i].toString());
+    console.log(JSON.stringify(data[i]));
   }
 
 
