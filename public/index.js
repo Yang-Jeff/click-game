@@ -138,7 +138,7 @@ function recordScore(score){
     console.log(scoreJSONString);
 
     try{
-      //TODO why doesn't this work
+      //NOTE why doesn't this work
       // $.post("./scores", scoreJSONString);
 
       $.ajax({

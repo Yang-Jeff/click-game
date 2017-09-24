@@ -2,20 +2,21 @@
 <html>
 
   <body>
+    <link rel="stylesheet" type="text/css" href="ClickGame.css"/>
+
     <h1>Mouse Click Game</h1>
     <p>
       Welcome to a small mouse click accuracy game. To play, simply try to click 10
       targets as fast as you can.
     </p>
 
-    <link rel="stylesheet" type="text/css" href="ClickGame.css"/>
     <canvas id="canvas" width="600" height="400"></canvas>
     <p>Targets left: <span id="targetsLeft"> </span></p>
 
     <a href="highscores.html">High scores</a>
 
 
-    <!-- NOTE jQuery used to post score json to server, though there should be better way to do this-->
+    <!-- FIXME jQuery used to post score json to server, though there should be better way to do this-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="index.js"></script>
   </body>

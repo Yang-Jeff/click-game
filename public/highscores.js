@@ -1,16 +1,25 @@
-// NOTE is there better way to do this than with jquery???
+// FIXME is there better way to do this than with jquery???
 
 $.getJSON('./highscores', function(data){
-  // TODO work with data
+
   for (var i = 0; i < data.length; i++){
 
     var para = document.createElement("p");
-    var node = document.createTextNode(data[i].Name + " Time: " + data[i].Score);
-    para.appendChild(node);
+    para.className = 'high_score';
+
+    var name = document.createElement("span");
+    name.setAttribute('class', 'high_score_name');
+    name.innerHTML = data[i].Name;
+
+    var score = document.createElement("span");
+    score.setAttribute('class', 'high_score_score');
+    score.innerHTML = data[i].Score + " seconds";
+
+    para.appendChild(name);
+    para.appendChild(score);
+
     var element = document.getElementById("heading");
     element.appendChild(para);
-
-
 
     console.log(JSON.stringify(data[i]));
   }
