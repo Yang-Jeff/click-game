@@ -28,7 +28,7 @@ app.post('/scores', function(request, response){
 // this retrieves the high scores
 app.get('/highscores', function(request, response){
   db.all("SELECT * FROM Scores ORDER BY Score ASC", function(err, rows){
-
+ 
     console.log("GET request for scores");
     response.send(rows);
   });

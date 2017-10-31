@@ -4,7 +4,8 @@ var context = canvas.getContext("2d");
 var circX, circY; // center coordinates for the circle
 var clickX, clickY; // coordinates of the user click event
 const TARGET_RAD = 20; // radius of the target circle
-const TOTAL_TARGETS = 10
+const TOTAL_TARGETS = 10;
+
 
 var canvasLeft = canvas.offsetLeft;
 var canvasTop = canvas.offsetTop;
@@ -24,12 +25,9 @@ drawStartButton();
 
 console.log("About to start");
 // listening for user click
-canvas.addEventListener('click', function(event){
+canvas.addEventListener('mousedown', function(event){
   clickEvent(event);
 }, false);
-
-
-
 
 
 // functions below

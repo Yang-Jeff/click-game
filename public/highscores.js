@@ -1,4 +1,4 @@
-// FIXME is there better way to do this than with jquery???
+// HACK is there better way to do this than with jquery???
 
 $.getJSON('./highscores', function(data){
 
