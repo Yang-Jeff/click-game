@@ -152,7 +152,6 @@ function recordScore(score){
     catch(err){
 
     }
-    alert("TODO send score")
   }
 
 }
